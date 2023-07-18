@@ -1,35 +1,64 @@
 package mConversorAPI;
 
-import javax.swing.JOptionPane;
-import mConversorAPI.InvalidInputException;;
+import java.text.DecimalFormat;
+
+import javax.swing.JTextArea;
+
+import mConversorAPI.gui.ConversorAPP;
 
 public class Conversiones {
-	public static double monto;
 
-	public static void convertirMonedas() throws InvalidInputException {
+	 private static String formatearMonto(double monto) {
+	        DecimalFormat df = new DecimalFormat("#,##0.00");
+	        return df.format(monto);
+	    }
+	
+	public static void convertirUsdToPEN(JTextArea textArea) {
+		double conversion = ConversorAPP.monto * APIexchange.usdToPENRate;
+		double montoRedondeado = Math.round(conversion * 100.0) / 100.0;
+		 String montoFormateado = formatearMonto(montoRedondeado);
+		   textArea.setText(montoFormateado);
+	}
 
-		// Tipo de cambios
-		Object[] monedas = { "De Dólares a Colones", "De Dólares a Euros", "De Dólares a Libras", "De Dólares a Yen",
-				"De Dólares a Won Coreano", "De Dólares a Pesos Méxicanos", "De Dólares a Soles" };
+	public static void convertirUsdToKRW(JTextArea textArea) {
+		double conversion = ConversorAPP.monto * APIexchange.usdToKRWRate;
+		double montoRedondeado = Math.round(conversion * 100.0) / 100.0;
+		 String montoFormateado = formatearMonto(montoRedondeado);
+		 textArea.setText(montoFormateado);
+	}
 
-		String monedaSeleccionada = (String) JOptionPane.showInputDialog(null,
-				"Elija la moneda a la que deseas convertir tu dinero", "Monedas", JOptionPane.PLAIN_MESSAGE, null,
-				monedas, monedas[0]);
-		if (monedaSeleccionada != null) {
-			JOptionPane.showMessageDialog(null, "Has seleccionado " + monedaSeleccionada);
-		}
-		// Obtener monto inicial
-		String montoString = JOptionPane.showInputDialog(null, "Ingrese el monto:");
+	public static void convertirUsdToMXN(JTextArea textArea) {
+		double conversion = ConversorAPP.monto * APIexchange.usdToMXNRate;
+		double montoRedondeado = Math.round(conversion * 100.0) / 100.0;
+		 String montoFormateado = formatearMonto(montoRedondeado);
+		  textArea.setText(montoFormateado);
+	}
 
-		try {
-			monto = Double.parseDouble(montoString); // Asignar el valor a la variable estática
-		} catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(null, "Asegúrate de haber ingresado únicamente números");
-			throw new InvalidInputException("Caracteres invalidos");
-		}
+	public static void convertirUsdToJPY(JTextArea textArea) {
+		double conversion = ConversorAPP.monto * APIexchange.usdToJPYRate;
+		double montoRedondeado = Math.round(conversion * 100.0) / 100.0;
+		 String montoFormateado = formatearMonto(montoRedondeado);
+		  textArea.setText(montoFormateado);
+	}
 
-		if (montoString != null) {
-			JOptionPane.showMessageDialog(null, "El monto introducido es: " + monto);
-		}
+	public static void convertirUsdToGBP(JTextArea textArea) {
+		double conversion = ConversorAPP.monto * APIexchange.usdToGBPRate;
+		double montoRedondeado = Math.round(conversion * 100.0) / 100.0;
+		 String montoFormateado = formatearMonto(montoRedondeado);
+		  textArea.setText(montoFormateado);
+	}
+
+	public static void convertirUsdToEur(JTextArea textArea) {
+		double conversion = ConversorAPP.monto * APIexchange.usdToEurRate;
+		double montoRedondeado = Math.round(conversion * 100.0) / 100.0;
+		 String montoFormateado = formatearMonto(montoRedondeado);
+		  textArea.setText(montoFormateado);
+	}
+
+	public static void convertirUsdToCrc(JTextArea textArea) {
+		double conversion = ConversorAPP.monto * APIexchange.usdToCrcRate;
+		double montoRedondeado = Math.round(conversion * 100.0) / 100.0;
+		 String montoFormateado = formatearMonto(montoRedondeado);
+		 textArea.setText(montoFormateado);
 	}
 }

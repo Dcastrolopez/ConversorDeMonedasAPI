@@ -4,11 +4,18 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 import org.json.JSONObject;
 
-public class APIopenexchangerates {
+public class APIexchange {
+	
+	static double usdToCrcRate;
+	static double usdToEurRate;
+	static double usdToGBPRate;
+	static double usdToJPYRate;
+	static double usdToMXNRate;
+	static double usdToPENRate;
+	static double usdToKRWRate;
 
 	public static void main(String[] args) {
 		obtenerTasaDeCambios();
@@ -36,7 +43,6 @@ public class APIopenexchangerates {
 				scanner.close();
 
 				JSONObject jsonObject = new JSONObject(informationString.toString());
-				System.out.println(jsonObject);
 				
 				// Obtener las tasas de cambio
 				JSONObject rates = jsonObject.getJSONObject("rates");
@@ -50,15 +56,14 @@ public class APIopenexchangerates {
 				}
 
 				// Asignar las tasas de cambio a variables individuales
-				double usdToCrcRate = tasas[0];
-				double usdToEurRate = tasas[1];
-				double usdToGBPRate = tasas[2];
-				double usdToJPYRate = tasas[3];
-				double usdToMXNRate = tasas[4];
-				double usdToPENRate = tasas[5];
-				double usdToKRWRate = tasas[6];
-
-				System.out.println(usdToCrcRate);
+				usdToCrcRate = tasas[0];
+				usdToEurRate = tasas[1];
+				usdToGBPRate = tasas[2];
+				usdToJPYRate = tasas[3];
+				usdToMXNRate = tasas[4];
+				usdToPENRate = tasas[5];
+				usdToKRWRate = tasas[6];
+				
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
