@@ -1,64 +1,49 @@
 package mConversorAPI;
 
+import mConversorAPI.gui.ConversorDeDólares;
+
+import javax.swing.*;
 import java.text.DecimalFormat;
-
-import javax.swing.JTextArea;
-
-import mConversorAPI.gui.ConversorAPP;
 
 public class Conversiones {
 
-	 private static String formatearMonto(double monto) {
-	        DecimalFormat df = new DecimalFormat("#,##0.00");
-	        return df.format(monto);
-	    }
-	
-	public static void convertirUsdToPEN(JTextArea textArea) {
-		double conversion = ConversorAPP.monto * APIexchange.usdToPENRate;
+	private static String formatearMonto(double monto) {
+		DecimalFormat df = new DecimalFormat("#,##0.00");
+		return df.format(monto);
+	}
+
+	private static void convertirUsdToMoneda(JTextArea textArea, double factorConversion) {
+		double conversion = ConversorDeDólares.monto * factorConversion;
 		double montoRedondeado = Math.round(conversion * 100.0) / 100.0;
-		 String montoFormateado = formatearMonto(montoRedondeado);
-		   textArea.setText(montoFormateado);
+		String montoFormateado = formatearMonto(montoRedondeado);
+		textArea.setText(montoFormateado);
+	}
+
+	public static void convertirUsdToPEN(JTextArea textArea) {
+		convertirUsdToMoneda(textArea, APIexchange.usdToPENRate);
 	}
 
 	public static void convertirUsdToKRW(JTextArea textArea) {
-		double conversion = ConversorAPP.monto * APIexchange.usdToKRWRate;
-		double montoRedondeado = Math.round(conversion * 100.0) / 100.0;
-		 String montoFormateado = formatearMonto(montoRedondeado);
-		 textArea.setText(montoFormateado);
+		convertirUsdToMoneda(textArea, APIexchange.usdToKRWRate);
 	}
 
 	public static void convertirUsdToMXN(JTextArea textArea) {
-		double conversion = ConversorAPP.monto * APIexchange.usdToMXNRate;
-		double montoRedondeado = Math.round(conversion * 100.0) / 100.0;
-		 String montoFormateado = formatearMonto(montoRedondeado);
-		  textArea.setText(montoFormateado);
+		convertirUsdToMoneda(textArea, APIexchange.usdToMXNRate);
 	}
 
 	public static void convertirUsdToJPY(JTextArea textArea) {
-		double conversion = ConversorAPP.monto * APIexchange.usdToJPYRate;
-		double montoRedondeado = Math.round(conversion * 100.0) / 100.0;
-		 String montoFormateado = formatearMonto(montoRedondeado);
-		  textArea.setText(montoFormateado);
+		convertirUsdToMoneda(textArea, APIexchange.usdToJPYRate);
 	}
 
 	public static void convertirUsdToGBP(JTextArea textArea) {
-		double conversion = ConversorAPP.monto * APIexchange.usdToGBPRate;
-		double montoRedondeado = Math.round(conversion * 100.0) / 100.0;
-		 String montoFormateado = formatearMonto(montoRedondeado);
-		  textArea.setText(montoFormateado);
+		convertirUsdToMoneda(textArea, APIexchange.usdToGBPRate);
 	}
 
 	public static void convertirUsdToEur(JTextArea textArea) {
-		double conversion = ConversorAPP.monto * APIexchange.usdToEurRate;
-		double montoRedondeado = Math.round(conversion * 100.0) / 100.0;
-		 String montoFormateado = formatearMonto(montoRedondeado);
-		  textArea.setText(montoFormateado);
+		convertirUsdToMoneda(textArea, APIexchange.usdToEurRate);
 	}
 
 	public static void convertirUsdToCrc(JTextArea textArea) {
-		double conversion = ConversorAPP.monto * APIexchange.usdToCrcRate;
-		double montoRedondeado = Math.round(conversion * 100.0) / 100.0;
-		 String montoFormateado = formatearMonto(montoRedondeado);
-		 textArea.setText(montoFormateado);
+		convertirUsdToMoneda(textArea, APIexchange.usdToCrcRate);
 	}
 }
