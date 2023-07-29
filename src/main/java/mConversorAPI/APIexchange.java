@@ -46,13 +46,14 @@ class APIexchange {
 				// Obtener las tasas de cambio
 				JSONObject rates = jsonObject.getJSONObject("rates");
 				// Definir monedas y tasas correspondientes
+				System.out.println();
 
 				double[] tasas = new double[monedas.length];
 
 				for (int i = 0; i < monedas.length; i++) {
 					tasas[i] = rates.getDouble(monedas[i]);
 				}
-
+				
 				// Asignar las tasas de cambio a variables individuales
 				usdToCrcRate = tasas[0];
 				usdToEurRate = tasas[1];

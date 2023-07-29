@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.text.DecimalFormat;
 
 public class Conversiones {
+	
+	// Conversiones en dólares
 
 	private static String formatearMonto(double monto) {
 		DecimalFormat df = new DecimalFormat("#,##0.00");
@@ -46,4 +48,10 @@ public class Conversiones {
 	public static void convertirUsdToCrc(JTextArea textArea) {
 		convertirUsdToMoneda(textArea, APIexchange.usdToCrcRate);
 	}
+	
+	// Conversiones en colones
+	
+//	public static void convertirCrcTOMoneda(double monto) {
+//		double conversion = C
+//	}
 }
